@@ -2,7 +2,7 @@ pipeline {
     agent any  // this means any available Jenkins agent can run this job
 
     tools {
-        maven 'Maven 3.9.10' // replace with the Maven tool name you configured in Jenkins global tools
+        maven 'maven3' // replace with the Maven tool name you configured in Jenkins global tools
     }
 
     stages {
