@@ -16,6 +16,7 @@ stage('Terraform Init & Plan') {
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'todo-app-aws-credential']]) {
         sh '''
             set -e
+            git --version
             pwd
             ls -la
             cd root
