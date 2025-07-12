@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+tools {
+        git 'DefaultGit'
+    }
    stages {
         stage('Clone Repo') {
             steps {
