@@ -14,11 +14,17 @@ pipeline {
 stage('Terraform Init & Plan') {
     steps {
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'todo-app-aws-credential']]) {
-            sh '''
-                cd root
-                terraform init
-                terraform plan -out=tfplan
-            '''
+        sh '''
+            set -e
+            pwd
+            ls -la
+            cd root
+            pwd
+            ls -la
+            terraform init
+            terraform plan -out=tfplan
+        '''
+
         }
     }
 }
