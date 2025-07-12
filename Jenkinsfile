@@ -37,3 +37,8 @@ stage('Terraform Init & Plan') {
         }
     }
 }
+post {
+    always {
+        deleteDir()
+    }
+}
