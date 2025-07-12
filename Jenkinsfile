@@ -2,7 +2,7 @@ pipeline {
     agent any
 
 tools {
-        git 'DefaultGit'
+        git 'git'
     }
    stages {
         stage('Clone Repo') {
