@@ -18,7 +18,7 @@ stage('Terraform Init & Plan') {
             cd root
             pwd
             ls -la
-            terraform init
+            terraform init -backend-config=backend-dev.hcl
             terraform plan -out=tfplan
         '''
 
