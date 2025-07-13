@@ -23,18 +23,6 @@ pipeline {
             }
         }
 
-        stage('Terraform Apply') {
-            steps {
-                input message: 'Approve apply?', ok: 'Apply'
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'todo-app-aws-credential']]) {
-                    sh '''
-                        cd root/
-                        terraform apply "tfplan"
-                    '''
-                }
-            }
-        }
-
         stage('Terraform Destroy') {
             steps {
                 input message: 'Confirm destroy?', ok: 'Destroy'
