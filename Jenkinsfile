@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        terraform 'terraform' // Match the name from your screenshot
+    }
 
 stages {
 
