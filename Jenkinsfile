@@ -1,17 +1,7 @@
 pipeline {
     agent any
 
-tools {
-        git 'git'
-    }
-   stages {
-        stage('Clone Repo') {
-            steps {
-                sshagent (credentials: ['github-todo-app']) {
-                    sh 'git clone git@github.com:john1234567987/todo-app.git'
-                }
-            }
-        }
+stages {
 
 
 stage('Terraform Init & Plan') {
