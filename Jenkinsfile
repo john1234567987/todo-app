@@ -32,7 +32,7 @@ stage('Terraform Init & Plan') {
                 input message: 'Approve apply?', ok: 'Apply'
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'todo-app-aws-credential']]) {
                     sh '''
-                        cd todo-app/terraform
+                        cd root/
                         terraform apply tfplan
                     '''
                 }
