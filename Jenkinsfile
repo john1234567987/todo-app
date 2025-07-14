@@ -3,10 +3,9 @@ pipeline {
     tools {
         terraform 'terraform' // Match the name from your Jenkins tool config
     }
-
-
-    
-
+    parameters {
+        string(name: 'BACKEND_CONFIG_FILE', defaultValue: 'backend-dev.hcl', description: 'Terraform backend config file')
+    }
     stages {
         stage('Terraform Init & Plan') {
             steps {
@@ -19,7 +18,7 @@ pipeline {
                         cd root
                         pwd
                         ls -la
-                        terraform init -backend-config=backend-dev.hcl
+                        terraform init -backend-config=${BACKEND_CONFIG_FILE}
                         terraform plan -out=tfplan
                     '''
                 }
