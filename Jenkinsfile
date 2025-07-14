@@ -4,6 +4,9 @@ pipeline {
         terraform 'terraform' // Match the name from your Jenkins tool config
     }
 
+
+    
+
     stages {
         stage('Terraform Init & Plan') {
             steps {
@@ -18,6 +21,19 @@ pipeline {
                         ls -la
                         terraform init -backend-config=backend-dev.hcl
                         terraform plan -out=tfplan
+                    '''
+                }
+            }
+        }
+
+
+        stage('Terraform Apply') {
+            steps {
+                input message: 'Approve apply?', ok: 'Apply'
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'todo-app-aws-credential']]) {
+                    sh '''
+                        cd root/
+                        terraform apply "tfplan"
                     '''
                 }
             }
