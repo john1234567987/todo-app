@@ -25,7 +25,15 @@ pipeline {
                 }
             }
         }
-
+            
+     stage('Terraform Apply') {
+              steps {
+                script {
+                  input message: "Approve apply?"
+                  sh 'terraform apply "tfplan"'
+                }
+              }
+            }
 
 
         stage('Terraform Destroy') {
