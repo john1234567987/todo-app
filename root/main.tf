@@ -92,14 +92,6 @@ module "route53" {
 
 }
 
-module "dns_and_alb_routing" {
-  source         = "../modules/cm"
-  domain_name    = var.domain_name
-  alb_arn        = module.alb.alb_arn
-  hosted_zone_id = module.route53.hosted_zone_id
-  tg_arn         = module.alb.tgt_arn
-}
-
 
 module "lambda_function"  {
    source        = "../modules/lambda_function"
